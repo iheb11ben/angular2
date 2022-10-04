@@ -1,0 +1,57 @@
+<div class="product-form">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label>Reference</label>
+            <input type="text" formControlName="ref" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['ref'].errors }" />
+            <div *ngIf="submitted && f['ref'].errors" class="invalid-feedback">
+                <div *ngIf="f['ref'].errors['required']">Reference is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" formControlName="description" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" />
+            <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                <div *ngIf="f['description'].errors['required']">Description is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>price</label>
+            <input type="text" formControlName="price" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['price'].errors }" />
+            <div *ngIf="submitted && f['price'].errors" class="invalid-feedback">
+                <div *ngIf="f['price'].errors['required']">Price is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>quantity</label>
+            <input type="text" formControlName="qte" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f['qte'].errors }" />
+            <div *ngIf="submitted && f['qte'].errors" class="invalid-feedback">
+                <div *ngIf="f['qte'].errors['required']">quantity is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+        </div>
+        <div>
+            <label>Subcategory</label> &nbsp;
+            <select class="form-select" formControlName="Subcategory">
+          
+            <option *ngFor="let Subcategory of listsubcategory" [value]="Subcategory._id">{{Subcategory.name}}</option>
+          </select>
+        </div>
+        <div class="col-sm-6 mb-3">
+         <input type="file" (change)="onFileChange($event)" name="photos" multiple class="form-control form-control-user" id="exampleRepeatPassword" placeholder="file">
+           </div>
+
+        
+    </form>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add product</button>
+        <button type="button" (click)="onReset()" class="btn btn-warning float-right">
+            Reset
+        </button>
+    </div>
+</div>
